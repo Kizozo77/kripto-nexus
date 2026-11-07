@@ -16,10 +16,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans relative overflow-hidden">
-      {/* Ornamen Ambient Blur Mesh yang terlihat saat di-scroll */}
-      <div className="ambient-glow-1 top-24 left-1/4 -translate-x-1/2" />
-      <div className="ambient-glow-2 top-[600px] right-0 translate-x-1/3" />
-      <div className="ambient-glow-3 top-[1200px] left-[-100px]" />
+      {/* Ornamen warna lembut di background agar efek blur kaca terlihat saat di-scroll */}
+      <div className="bg-ambient-orb w-[500px] h-[500px] bg-blue-300/30 -top-20 -left-20" />
+      <div className="bg-ambient-orb w-[450px] h-[450px] bg-purple-300/25 top-[500px] -right-20" />
+      <div className="bg-ambient-orb w-[500px] h-[500px] bg-teal-300/25 top-[1100px] left-10" />
+      <div className="bg-ambient-orb w-[450px] h-[450px] bg-rose-300/25 top-[1700px] right-20" />
 
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
@@ -38,7 +39,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="py-8 border-t border-slate-200/80 bg-white/80 backdrop-blur-lg relative z-10">
+      <footer className="py-8 border-t border-slate-200/80 bg-white/70 backdrop-blur-md relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <p className="font-extrabold text-slate-900 text-sm tracking-tight">
