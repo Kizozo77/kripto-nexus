@@ -69,7 +69,7 @@ export default function StreamCipher() {
       <div className="p-5 sm:p-6 rounded-2xl bg-teal-50/70 border border-teal-200/80 space-y-2">
         <div className="flex items-center gap-2 text-teal-900 font-bold text-sm sm:text-base">
           <HelpCircle className="w-4 h-4 text-teal-600" />
-          <span>Pengertian Mudah: Apa itu Stream Cipher?</span>
+          <span>Apa itu Stream Cipher?</span>
         </div>
         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
           Jika block cipher menunggu pesan terkumpul satu kardus, <b>Stream Cipher bekerja seperti keran air yang mengalir tanpa henti</b>. Begitu Anda mengetik satu huruf, detik itu juga huruf tersebut langsung disatukan dengan satu angka acak rahasia dari aliran kunci (keystream) menggunakan gerbang logika <b>XOR</b> (C = P ⊕ K). Karena tidak perlu menunggu penampungan data, metode ini sangat cepat dan ideal untuk panggilan telepon suara, video call, dan transmisi nirkabel.
@@ -168,9 +168,9 @@ export default function StreamCipher() {
         <div className="flex items-center gap-2 border-b border-slate-100 pb-2.5">
           <BookOpen className="w-4 h-4 text-teal-600" />
           <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-            {method === "rc4" && "Alur Kerja Jelas: RC4 (Rivest Cipher 4)"}
-            {method === "otp" && "Alur Kerja Jelas: One-Time Pad (Vernam Cipher)"}
-            {method === "autokey" && "Alur Kerja Jelas: Autokey Cipher"}
+            {method === "rc4" && "Alur Kerja: RC4 (Rivest Cipher 4)"}
+            {method === "otp" && "Alur Kerja: One-Time Pad (Vernam Cipher)"}
+            {method === "autokey" && "Alur Kerja: Autokey Cipher"}
           </h4>
         </div>
 
@@ -240,3 +240,5 @@ export default function StreamCipher() {
     </div>
   );
 }
+
+

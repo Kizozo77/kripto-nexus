@@ -64,7 +64,7 @@ export default function FunctionBased() {
       <div className="p-5 sm:p-6 rounded-2xl bg-purple-50/70 border border-purple-200/80 space-y-2">
         <div className="flex items-center gap-2 text-purple-900 font-bold text-sm sm:text-base">
           <HelpCircle className="w-4 h-4 text-purple-600" />
-          <span>Pengertian Mudah: 3 Pilar Keamanan Informasi</span>
+          <span>3 Pilar Keamanan Informasi</span>
         </div>
         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
           Kriptografi bukan hanya sekadar mengacak teks agar tidak bisa dibaca orang. Keamanan sistem digital bersandar pada 3 pilar: 
@@ -168,9 +168,9 @@ export default function FunctionBased() {
         <div className="flex items-center gap-2 border-b border-slate-100 pb-2.5">
           <BookOpen className="w-4 h-4 text-purple-600" />
           <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-            {method === "caesar" && "Alur Kerja Jelas: Caesar Cipher (Pilar Kerahasiaan)"}
-            {method === "sha256" && "Alur Kerja Jelas: SHA-256 Digest (Pilar Integritas Data)"}
-            {method === "hmac" && "Alur Kerja Jelas: HMAC SHA-256 (Pilar Otentikasi Pengirim)"}
+            {method === "caesar" && "Alur Kerja: Caesar Cipher (Pilar Kerahasiaan)"}
+            {method === "sha256" && "Alur Kerja: SHA-256 Digest (Pilar Integritas Data)"}
+            {method === "hmac" && "Alur Kerja: HMAC SHA-256 (Pilar Otentikasi Pengirim)"}
           </h4>
         </div>
 
@@ -240,3 +240,5 @@ export default function FunctionBased() {
     </div>
   );
 }
+
+

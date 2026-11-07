@@ -102,4 +102,8 @@ npm run start
 
 ## 📄 Lisensi & Hak Cipta
 
+<<<<<<< HEAD
 Proyek ini dikembangkan guna memenuhi tugas akademik mata kuliah **Kriptografi & Steganografi** oleh **Kelompok 3**. Seluruh kode sumber terbuka untuk keperluan pembelajaran dan pengembangan akademis.
+=======
+Proyek ini dikembangkan guna memenuhi tugas akademik mata kuliah **Kriptografi & Steganografi** oleh **Kelompok 3**. Seluruh kode sumber terbuka untuk keperluan pembelajaran dan pengembangan akademis.
+>>>>>>> fa78651 (style: remove word 'jelas' from workflow headers across all modules)

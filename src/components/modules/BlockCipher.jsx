@@ -55,7 +55,7 @@ export default function BlockCipher() {
       <div className="p-5 sm:p-6 rounded-2xl bg-blue-50/70 border border-blue-200/80 space-y-2">
         <div className="flex items-center gap-2 text-blue-900 font-bold text-sm sm:text-base">
           <HelpCircle className="w-4 h-4 text-blue-600" />
-          <span>Pengertian Mudah: Apa itu Block Cipher?</span>
+          <span>Apa itu Block Cipher?</span>
         </div>
         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
           Block Cipher bekerja seperti <b>mengepak barang ke dalam kardus yang ukurannya selalu sama</b>. Pesan panjang tidak diproses huruf per huruf, melainkan dipotong menjadi paket berukuran tetap (misalnya 128 bit pada AES atau 64 bit pada DES). Setiap potongan paket tersebut kemudian diacak posisinya dan ditukar isinya berkali-kali menggunakan kunci rahasia yang sama. Jika potongan teks terakhir kurang panjang, sistem akan menambahkan karakter pengganjal (padding) agar ukurannya pas satu blok utuh.
@@ -147,9 +147,9 @@ export default function BlockCipher() {
         <div className="flex items-center gap-2 border-b border-slate-100 pb-2.5">
           <BookOpen className="w-4 h-4 text-blue-600" />
           <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-            {method === "aes" && "Alur Kerja Jelas: AES (Advanced Encryption Standard)"}
-            {method === "des" && "Alur Kerja Jelas: DES (Data Encryption Standard)"}
-            {method === "playfair" && "Alur Kerja Jelas: Playfair Cipher"}
+            {method === "aes" && "Alur Kerja: AES (Advanced Encryption Standard)"}
+            {method === "des" && "Alur Kerja: DES (Data Encryption Standard)"}
+            {method === "playfair" && "Alur Kerja: Playfair Cipher"}
           </h4>
         </div>
 
@@ -219,3 +219,5 @@ export default function BlockCipher() {
     </div>
   );
 }
+
+

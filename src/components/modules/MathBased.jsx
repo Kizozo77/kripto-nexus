@@ -79,7 +79,7 @@ export default function MathBased() {
       <div className="p-5 sm:p-6 rounded-2xl bg-rose-50/70 border border-rose-200/80 space-y-2">
         <div className="flex items-center gap-2 text-rose-900 font-bold text-sm sm:text-base">
           <HelpCircle className="w-4 h-4 text-rose-600" />
-          <span>Pengertian Mudah: Mengapa Menggunakan Modulo 128?</span>
+          <span>Mengapa Menggunakan Modulo 128?</span>
         </div>
         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
           Kalkulator kriptografi sekolah pada umumnya hanya bisa huruf A sampai Z (modulo 26). Pada aplikasi ini, kita menggunakan <b>Modulo 128</b>, artinya kita dapat mengenkripsi <b>seluruh 128 karakter tabel ASCII standar</b>: huruf besar, huruf kecil, angka (0-9), spasi, serta tanda baca lengkap tanpa perlu membuang spasi. Agar pesan sandi bisa didekripsi kembali, kunci matematika yang dipakai wajib memiliki nilai determinan ganjil (faktor pengali tidak boleh genap terhadap 128).
@@ -225,9 +225,9 @@ export default function MathBased() {
         <div className="flex items-center gap-2 border-b border-slate-100 pb-2.5">
           <BookOpen className="w-4 h-4 text-rose-600" />
           <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-            {method === "hill" && "Alur Kerja Jelas: Hill Cipher Modulo 128"}
-            {method === "rsa" && "Alur Kerja Jelas: Toy RSA (Asimetris Publik-Privat)"}
-            {method === "dh" && "Alur Kerja Jelas: Protokol Pertukaran Kunci Diffie-Hellman"}
+            {method === "hill" && "Alur Kerja: Hill Cipher Modulo 128"}
+            {method === "rsa" && "Alur Kerja: Toy RSA (Asimetris Publik-Privat)"}
+            {method === "dh" && "Alur Kerja: Protokol Pertukaran Kunci Diffie-Hellman"}
           </h4>
         </div>
 
@@ -297,3 +297,5 @@ export default function MathBased() {
     </div>
   );
 }
+
+
