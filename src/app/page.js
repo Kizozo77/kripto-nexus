@@ -15,10 +15,15 @@ export default function Home() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans relative overflow-hidden">
+      {/* Ornamen Ambient Blur Mesh yang terlihat saat di-scroll */}
+      <div className="ambient-glow-1 top-24 left-1/4 -translate-x-1/2" />
+      <div className="ambient-glow-2 top-[600px] right-0 translate-x-1/3" />
+      <div className="ambient-glow-3 top-[1200px] left-[-100px]" />
+
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      <main className="flex-1">
+      <main className="flex-1 relative z-10">
         <Hero setActiveTab={setActiveTab} />
 
         <div id="workspace" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
@@ -33,7 +38,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="py-8 border-t border-slate-200 bg-white">
+      <footer className="py-8 border-t border-slate-200/80 bg-white/80 backdrop-blur-lg relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <p className="font-extrabold text-slate-900 text-sm tracking-tight">
@@ -48,7 +53,7 @@ export default function Home() {
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs transition active:scale-95 cursor-pointer"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-xs transition active:scale-95 cursor-pointer"
           >
             <span>Kembali ke Atas</span>
             <span>↑</span>
