@@ -15,16 +15,18 @@ export default function Home() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans relative overflow-hidden">
-      {/* Ornamen warna lembut di background agar efek blur kaca terlihat saat di-scroll */}
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans relative">
+      {/* Ornamen Ambient Glow */}
       <div className="bg-ambient-orb w-[500px] h-[500px] bg-blue-300/30 -top-20 -left-20" />
       <div className="bg-ambient-orb w-[450px] h-[450px] bg-purple-300/25 top-[500px] -right-20" />
       <div className="bg-ambient-orb w-[500px] h-[500px] bg-teal-300/25 top-[1100px] left-10" />
       <div className="bg-ambient-orb w-[450px] h-[450px] bg-rose-300/25 top-[1700px] right-20" />
 
+      {/* Header Fixed */}
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      <main className="flex-1 relative z-10">
+      {/* Konten dengan pt-[76px] agar tidak tertutup header */}
+      <main className="flex-1 relative z-10 pt-[76px]">
         <Hero setActiveTab={setActiveTab} />
 
         <div id="workspace" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">

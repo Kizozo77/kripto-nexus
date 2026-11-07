@@ -41,8 +41,8 @@ export default function Navbar({ activeTab, setActiveTab }) {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full glass-nav shadow-xs transition-all duration-300">
-      {/* Garis Progress Halus saat Halaman Di-scroll */}
+    <header className="fixed top-0 left-0 right-0 z-50 w-full glass-nav shadow-xs transition-all duration-300">
+      {/* Garis Progress saat Halaman Di-scroll */}
       <div
         className="h-[3px] bg-gradient-to-r from-blue-500 via-purple-500 to-rose-500 transition-all duration-150 ease-out"
         style={{ width: `${scrollProgress}%` }}
