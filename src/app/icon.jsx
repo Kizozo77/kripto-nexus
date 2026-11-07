@@ -16,10 +16,10 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #4338ca 100%)",
+          background: "linear-gradient(145deg, #18181b 0%, #09090b 100%)",
           borderRadius: "8px",
-          border: "1.5px solid rgba(255, 255, 255, 0.35)",
-          boxShadow: "0 2px 6px rgba(37, 99, 235, 0.4)",
+          border: "1.5px solid rgba(255, 255, 255, 0.18)",
+          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.6)",
         }}
       >
         <span
@@ -27,9 +27,9 @@ export default function Icon() {
             color: "#ffffff",
             fontSize: "20px",
             fontWeight: "900",
-            fontFamily: "sans-serif",
-            letterSpacing: "-1px",
-            textShadow: "0 1px 2px rgba(0, 0, 0, 0.35)",
+            fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+            letterSpacing: "-0.5px",
+            textShadow: "0 1px 3px rgba(0, 0, 0, 0.9)",
           }}
         >
           K
