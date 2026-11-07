@@ -14,12 +14,11 @@ body {
   background-color: #f8fafc;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
-/* Efek Kaca Buram Nyata (Frosted Glass) pada Tema Putih/Cerah */
+/* Glassmorphism Frosted Blur Navbar & Card */
 .saas-card {
-  background: rgba(255, 255, 255, 0.72) !important;
+  background: rgba(255, 255, 255, 0.75) !important;
   -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
   backdrop-filter: blur(16px) saturate(160%) !important;
   border: 1px solid rgba(226, 232, 240, 0.85);
@@ -28,21 +27,19 @@ body {
 }
 
 .saas-card:hover {
-  background: rgba(255, 255, 255, 0.88) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
   border-color: rgba(203, 213, 225, 1);
   box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.09);
   transform: translateY(-2px);
 }
 
-/* Header Navbar Kaca Buram */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.75) !important;
+  background: rgba(255, 255, 255, 0.78) !important;
   -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
   backdrop-filter: blur(20px) saturate(180%) !important;
   border-bottom: 1px solid rgba(226, 232, 240, 0.85);
 }
 
-/* Ornamen Cahaya Lembut Latar Belakang agar Efek Blur Kaca Terlihat Jelas */
 .bg-ambient-orb {
   position: absolute;
   border-radius: 9999px;
@@ -52,7 +49,24 @@ body {
   opacity: 0.65;
 }
 
-/* Custom Scrollbar Cerah */
+/* Scroll Reveal Keyframe / Transition Classes */
+.reveal-hidden {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(32px) scale(0.98);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, filter, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0) scale(1);
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
