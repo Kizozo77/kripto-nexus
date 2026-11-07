@@ -29,7 +29,7 @@ export default function Navbar({ activeTab, setActiveTab }) {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs py-3"
+          ? "glass-header-blur shadow-xs py-3"
           : "bg-white border-b border-slate-100 py-4"
       }`}
     >
