@@ -14,7 +14,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "KRIPTO-NEXUS | Enterprise Cryptography Suite",
+  title: "KRIPTO-NEXUS",
   description: "Platform eksplorasi 4 kategori dan 12 algoritma kriptografi modern kelompok 3.",
 };
 
