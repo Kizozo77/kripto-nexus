@@ -65,7 +65,7 @@ Aplikasi ini menyajikan 4 pilar kategori kriptografi interaktif yang diproses se
 
 ```bash
 # 1. Clone repositori
-git clone [https://github.com/Kizozo77/kripto-nexus.git](https://github.com/Kizozo77/kripto-nexus.git)
+git clone https://github.com/Kizozo77/kripto-nexus.git
 
 # 2. Masuk ke direktori
 cd kripto-nexus
