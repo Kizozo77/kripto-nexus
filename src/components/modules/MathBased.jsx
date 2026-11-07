@@ -82,7 +82,7 @@ export default function MathBased() {
           <span>Konsep Fundamental: Ruang Lingkup Aljabar Modulo 128</span>
         </div>
         <p className="text-xs text-slate-300 leading-relaxed text-justify">
-          Berbeda dari kriptografi klasik yang membatasi ruang aljabar pada 26 alfabet ($\mathbb{Z}_{26}$), sistem ini diimplementasikan di atas gelanggang komutatif <b>Modulo 128</b> ($\mathbb{Z}_{128}$). Desain ini mencakup seluruh himpunan karakter ASCII standar (indeks 0 hingga 127): huruf kapital, huruf kecil, angka (0–9), tanda baca, serta spasi tanpa perlu melakukan pemotongan karakter. Syarat mutlak pembalikan (dekripsi) adalah nilai penentu matriks atau parameter eksponen wajib koprima terhadap 128 ($\gcd(a, 128) = 1$), yang mensyaratkan nilainya bernilai ganjil.
+          Berbeda dari kriptografi klasik yang membatasi ruang aljabar pada 26 alfabet (Z26), sistem ini diimplementasikan di atas gelanggang komutatif <b>Modulo 128</b> (Z128). Desain ini mencakup seluruh himpunan karakter ASCII standar (indeks 0 hingga 127): huruf kapital, huruf kecil, angka (0–9), tanda baca, serta spasi tanpa perlu melakukan pemotongan karakter. Syarat mutlak pembalikan (dekripsi) adalah nilai penentu matriks atau parameter eksponen wajib koprima terhadap 128 (gcd(a, 128) = 1), yang mensyaratkan nilainya bernilai ganjil.
         </p>
       </div>
 
@@ -123,7 +123,7 @@ export default function MathBased() {
               <div>
                 <label className="block text-xs font-bold uppercase text-slate-400 mb-2">Matriks Kunci 2x2 (4 Nilai: a b c d)</label>
                 <input type="text" value={hillMatrix} onChange={(e) => setHillMatrix(e.target.value)} className="w-full px-3.5 py-2.5 bg-slate-950 border border-white/10 rounded-xl text-white text-sm font-mono" />
-                <span className="text-[11px] text-slate-500 mt-1 block">Contoh valid: <b>3 5 1 2</b> ($\det = 1$, bilangan ganjil yang memiliki invers modular pada Modulo 128).</span>
+                <span className="text-[11px] text-slate-500 mt-1 block">Contoh valid: <b>3 5 1 2</b> (det = 1, bernilai ganjil sehingga memiliki invers modular pada Modulo 128).</span>
               </div>
               <div className="grid grid-cols-2 gap-3 pt-2">
                 <button onClick={() => handleHill(true)} className="py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-xl text-xs shadow-lg transition active:scale-95 cursor-pointer">Enkripsi Hill</button>
@@ -207,8 +207,8 @@ export default function MathBased() {
               {details.modulo && <p>• Ruang Lingkup: Modulo {details.modulo} (ASCII 0-127)</p>}
               {details.determinant !== undefined && <p>• Determinan Matriks: {details.determinant}</p>}
               {details.matrixUsed && <p>• Matriks Operasi: {details.matrixUsed}</p>}
-              {details.publicKey && <p>• Kunci Publik ($e, n$): {details.publicKey}</p>}
-              {details.privateKey && <p>• Kunci Privat ($d, n$): {details.privateKey}</p>}
+              {details.publicKey && <p>• Kunci Publik (e, n): {details.publicKey}</p>}
+              {details.privateKey && <p>• Kunci Privat (d, n): {details.privateKey}</p>}
               {details.sharedSecret !== undefined && <p>• Shared Secret Verification: {details.matched ? "Valid & Identik" : "Inkonsisten"}</p>}
             </div>
           )}
@@ -221,7 +221,6 @@ export default function MathBased() {
         </div>
       </div>
 
-      {/* Rincian Teori Algoritma yang Dipilih */}
       <div className="p-5 rounded-2xl enterprise-card space-y-3 border-white/10">
         <div className="flex items-center gap-2 border-b border-white/10 pb-2.5">
           <BookOpen className="w-4 h-4 text-rose-400" />
@@ -236,19 +235,19 @@ export default function MathBased() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
             <div className="p-3 bg-slate-900/60 rounded-xl border border-white/5 space-y-1">
               <b className="text-rose-400 block font-semibold">1. Vektorisasi Pasangan Karakter ASCII</b>
-              <p className="text-slate-400">Teks masukan dikelompokkan menjadi vektor kolom berukuran $2 \times 1$: $\mathbf{P} = \begin{bmatrix} p_1 \\ p_2 \end{bmatrix}$ berdasarkan indeks ASCII 0–127.</p>
+              <p className="text-slate-400">Teks masukan dikelompokkan menjadi vektor kolom berukuran 2x1 berdasarkan indeks ASCII 0–127.</p>
             </div>
             <div className="p-3 bg-slate-900/60 rounded-xl border border-white/5 space-y-1">
               <b className="text-rose-400 block font-semibold">2. Enkripsi Perkalian Matriks Modulo 128</b>
-              <p className="text-slate-400">Enkripsi dijalankan dengan mengalikan matriks kunci $\mathbf{K}$: $\mathbf{C} \equiv \mathbf{K} \cdot \mathbf{P} \pmod{128}$.</p>
+              <p className="text-slate-400">Enkripsi dijalankan dengan mengalikan matriks kunci K terhadap vektor plaintext P dalam modulo 128.</p>
             </div>
             <div className="p-3 bg-slate-900/60 rounded-xl border border-white/5 space-y-1">
               <b className="text-rose-400 block font-semibold">3. Syarat Inversibilitas Matriks</b>
-              <p className="text-slate-400">Matriks kunci $\mathbf{K}$ harus memiliki determinan $\det(\mathbf{K}) = ad - bc$ yang relatif prima terhadap 128 ($\gcd(\det(\mathbf{K}), 128) = 1$). Karena faktor prima dari 128 hanyalah 2, syarat ini terpenuhi jika dan hanya jika determinan bernilai ganjil.</p>
+              <p className="text-slate-400">Matriks kunci K harus memiliki determinan det(K) = ad - bc yang relatif prima terhadap 128 (gcd(det(K), 128) = 1). Karena faktor prima 128 adalah 2, determinan wajib berupa bilangan ganjil.</p>
             </div>
             <div className="p-3 bg-slate-900/60 rounded-xl border border-white/5 space-y-1">
               <b className="text-rose-400 block font-semibold">4. Dekripsi Matriks Invers</b>
-              <p className="text-slate-400">Dekripsi dilakukan dengan mengalikan matriks balikan modular: $\mathbf{P} \equiv \mathbf{K}^{-1} \cdot \mathbf{C} \pmod{128}$, dengan $\mathbf{K}^{-1} \equiv (\det(\mathbf{K}))^{-1} \cdot \text{adj}(\mathbf{K}) \pmod{128}$.</p>
+              <p className="text-slate-400">Dekripsi dilakukan dengan mengalikan balikan matriks modular K^(-1) terhadap ciphertext C dalam modulo 128.</p>
             </div>
           </div>
         )}
@@ -256,20 +255,20 @@ export default function MathBased() {
         {method === "rsa" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
             <div className="p-3 bg-slate-900/60 rounded-xl border border-white/5 space-y-1">
-              <b className="text-rose-400 block font-semibold">1. Pembangkitan Parameter Kunci ($n$ & $\phi$)</b>
-              <p className="text-slate-400">Dipilih dua bilangan prima $p$ dan $q$. Dihitung modulus $n = p \times q$ dan fungsi totien Euler $\phi(n) = (p-1)(q-1)$.</p>
+              <b className="text-rose-400 block font-semibold">1. Pembangkitan Parameter Kunci (n & phi)</b>
+              <p className="text-slate-400">Dipilih dua bilangan prima p dan q. Dihitung modulus n = p * q dan fungsi totien Euler phi(n) = (p-1)(q-1).</p>
             </div>
             <div className="p-3 bg-slate-900/60 rounded-xl border border-white/5 space-y-1">
-              <b className="text-rose-400 block font-semibold">2. Penentuan Kunci Publik ($e$)</b>
-              <p className="text-slate-400">Dipilih eksponen enkripsi $e$ yang memenuhi $1 < e < \phi(n)$ dan $\gcd(e, \phi(n)) = 1$. Pasangan $(e, n)$ dipublikasikan sebagai kunci publik.</p>
+              <b className="text-rose-400 block font-semibold">2. Penentuan Kunci Publik (e)</b>
+              <p className="text-slate-400">Dipilih eksponen enkripsi e yang memenuhi 1 &lt; e &lt; phi(n) dan gcd(e, phi(n)) = 1. Pasangan (e, n) dipublikasikan sebagai kunci publik.</p>
             </div>
             <div className="p-3 bg-slate-900/60 rounded-xl border border-white/5 space-y-1">
-              <b className="text-rose-400 block font-semibold">3. Penurunan Kunci Privat ($d$)</b>
-              <p className="text-slate-400">Kunci privat $d$ dihitung sebagai balikan perkalian modular dari $e$ modulo $\phi(n)$: $d \cdot e \equiv 1 \pmod{\phi(n)}$ via Extended Euclidean Algorithm.</p>
+              <b className="text-rose-400 block font-semibold">3. Penurunan Kunci Privat (d)</b>
+              <p className="text-slate-400">Kunci privat d dihitung sebagai balikan perkalian modular dari e modulo phi(n): d * e = 1 mod phi(n) via Extended Euclidean Algorithm.</p>
             </div>
             <div className="p-3 bg-slate-900/60 rounded-xl border border-white/5 space-y-1">
               <b className="text-rose-400 block font-semibold">4. Eksponensiasi Modular</b>
-              <p className="text-slate-400">Enkripsi pesan numerik $m < n$: $c \equiv m^e \pmod n$. Dekripsi sandi: $m \equiv c^d \pmod n$ berdasarkan Teorema Euler.</p>
+              <p className="text-slate-400">Enkripsi integer m: c = (m^e) mod n. Dekripsi sandi: m = (c^d) mod n berdasarkan Teorema Euler.</p>
             </div>
           </div>
         )}
@@ -278,19 +277,19 @@ export default function MathBased() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
             <div className="p-3 bg-slate-900/60 rounded-xl border border-white/5 space-y-1">
               <b className="text-rose-400 block font-semibold">1. Kesepakatan Parameter Domain Publik</b>
-              <p className="text-slate-400">Alice dan Bob secara terbuka menyepakati modulus bilangan prima $p$ dan akar primitif generator $g \in \mathbb{Z}_p^*$.</p>
+              <p className="text-slate-400">Alice dan Bob secara terbuka menyepakati modulus bilangan prima p dan basis generator g.</p>
             </div>
             <div className="p-3 bg-slate-900/60 rounded-xl border border-white/5 space-y-1">
               <b className="text-rose-400 block font-semibold">2. Pemilihan Kunci Privat Mandiri</b>
-              <p className="text-slate-400">Masing-masing pihak membangkitkan nilai acak rahasia: Alice memilih eksponen privat $a$, sedangkan Bob memilih eksponen privat $b$.</p>
+              <p className="text-slate-400">Masing-masing pihak membangkitkan nilai rahasia: Alice memilih eksponen privat a, sedangkan Bob memilih eksponen privat b.</p>
             </div>
             <div className="p-3 bg-slate-900/60 rounded-xl border border-white/5 space-y-1">
               <b className="text-rose-400 block font-semibold">3. Pertukaran Kunci Publik Parsial</b>
-              <p className="text-slate-400">Alice menghitung dan mengirim $A \equiv g^a \pmod p$. Bob menghitung dan mengirim $B \equiv g^b \pmod p$ melalui kanal publik.</p>
+              <p className="text-slate-400">Alice menghitung A = (g^a) mod p, Bob menghitung B = (g^b) mod p lalu saling mengirimkan nilainya melalui kanal publik.</p>
             </div>
             <div className="p-3 bg-slate-900/60 rounded-xl border border-white/5 space-y-1">
-              <b className="text-rose-400 block font-semibold">4. Komputasi Kunci Rahasia Bersama (Shared Secret)</b>
-              <p className="text-slate-400">Alice menghitung $K \equiv B^a \pmod p$ dan Bob menghitung $K \equiv A^b \pmod p$. Keduanya menghasilkan kunci simetris identik $K \equiv g^{ab} \pmod p$. Pihak ketiga yang menyadap kanal tidak dapat menghitung $K$ karena terhalang masalah komputasi Discrete Logarithm Problem (DLP).</p>
+              <b className="text-rose-400 block font-semibold">4. Komputasi Kunci Rahasia Bersama</b>
+              <p className="text-slate-400">Alice menghitung K = (B^a) mod p dan Bob menghitung K = (A^b) mod p. Keduanya menghasilkan nilai kunci rahasia bersama identik K = (g^(ab)) mod p.</p>
             </div>
           </div>
         )}
