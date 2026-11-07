@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans relative overflow-x-hidden">
-      {/* Container Khusus Ambient Glow: Dikunci overflow-hidden agar tidak menimbulkan scroll horizontal */}
+      {/* Container Ambient Glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute w-[450px] h-[450px] rounded-full bg-blue-300/25 blur-3xl -top-20 -left-20" />
         <div className="absolute w-[400px] h-[400px] rounded-full bg-purple-300/20 blur-3xl top-[500px] -right-20" />
@@ -27,12 +27,13 @@ export default function Home() {
 
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      <main className="flex-1 relative z-10 pt-[76px]">
+      {/* Padding top dinamis: 118px di HP dan 76px di laptop/desktop */}
+      <main className="flex-1 relative z-10 pt-[118px] md:pt-[76px]">
         <RevealOnScroll delay={50}>
           <Hero setActiveTab={setActiveTab} />
         </RevealOnScroll>
 
-        <div id="workspace" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div id="workspace" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12">
           <RevealOnScroll delay={100}>
             {activeTab === "block" && <BlockCipher />}
             {activeTab === "stream" && <StreamCipher />}
