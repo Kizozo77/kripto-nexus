@@ -12,8 +12,10 @@ import TeamSection from "../components/TeamSection";
 export default function Home() {
   const [activeTab, setActiveTab] = useState("block");
 
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
   return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main className="flex-1">
@@ -31,8 +33,27 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="py-8 text-center text-xs text-slate-500 border-t border-white/5 bg-[#060911]">
-        © 2026 KRIPTO-NEXUS — Kelompok 3 Tugas Kriptografi & Steganografi
+      <footer className="py-8 border-t border-slate-200 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <p className="font-extrabold text-slate-900 text-sm tracking-tight">
+              KRIPTO<span className="text-blue-600">NEXUS</span>
+            </p>
+            <p className="text-xs text-slate-500">Proyek Kriptografi dan Steganografi • Kelompok 3</p>
+          </div>
+
+          <p className="text-xs text-slate-500 text-center sm:text-left max-w-md">
+            Dirancang dan dibangun untuk implementasi 4 topik dan 12 algoritma kriptografi interaktif.
+          </p>
+
+          <button
+            onClick={scrollToTop}
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs transition active:scale-95 cursor-pointer"
+          >
+            <span>Kembali ke Atas</span>
+            <span>↑</span>
+          </button>
+        </div>
       </footer>
     </div>
   );

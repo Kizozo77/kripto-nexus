@@ -7,16 +7,16 @@ export default function Navbar({ activeTab, setActiveTab }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 15);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { id: "block", label: "1. Block Cipher", icon: Lock, color: "text-blue-400" },
-    { id: "stream", label: "2. Stream Cipher", icon: Terminal, color: "text-emerald-400" },
-    { id: "function", label: "3. Fungsi Utama", icon: ShieldCheck, color: "text-purple-400" },
-    { id: "math", label: "4. Dasar Matematika", icon: Cpu, color: "text-rose-400" },
+    { id: "block", label: "1. Block Cipher", icon: Lock, activeColor: "bg-blue-600 text-white" },
+    { id: "stream", label: "2. Stream Cipher", icon: Terminal, activeColor: "bg-[#00897b] text-white" },
+    { id: "function", label: "3. Fungsi Utama", icon: ShieldCheck, activeColor: "bg-purple-600 text-white" },
+    { id: "math", label: "4. Dasar Matematika", icon: Cpu, activeColor: "bg-rose-600 text-white" },
   ];
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -29,32 +29,30 @@ export default function Navbar({ activeTab, setActiveTab }) {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "bg-slate-950/80 backdrop-blur-md border-b border-white/10 shadow-2xl py-3"
-          : "bg-transparent py-5"
+          ? "bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs py-3"
+          : "bg-white border-b border-slate-100 py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo Brand */}
           <button
             onClick={scrollToTop}
             className="flex items-center gap-3 text-left focus:outline-none cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-xl bg-blue-600/10 border border-blue-500/30 flex items-center justify-center text-blue-400 shadow-inner group-hover:scale-105 transition">
+            <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 shadow-2xs group-hover:scale-105 transition">
               <Shield className="w-5 h-5" />
             </div>
             <div>
-              <span className="font-extrabold text-white text-lg tracking-tight">
-                KRIPTO<span className="text-blue-500">NEXUS</span>
+              <span className="font-extrabold text-slate-900 text-lg tracking-tight">
+                KRIPTO<span className="text-blue-600">NEXUS</span>
               </span>
-              <span className="block text-[10px] text-slate-400 font-mono tracking-wider">
+              <span className="block text-[10px] text-slate-500 font-mono tracking-wider font-semibold">
                 ENTERPRISE SUITE
               </span>
             </div>
           </button>
 
-          {/* Capsule Navigasi Tengah */}
-          <nav className="hidden md:flex items-center p-1.5 rounded-2xl bg-slate-900/80 border border-white/10 backdrop-blur-lg gap-1">
+          <nav className="hidden md:flex items-center p-1 rounded-2xl bg-slate-100/80 border border-slate-200 gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
@@ -66,25 +64,24 @@ export default function Navbar({ activeTab, setActiveTab }) {
                     const ws = document.getElementById("workspace");
                     if (ws) ws.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                  className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                     isActive
-                      ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30 font-bold"
-                      : "text-slate-400 hover:text-white hover:bg-white/5"
+                      ? `${item.activeColor} shadow-2xs font-bold`
+                      : "text-slate-600 hover:text-slate-900 hover:bg-white"
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? "text-white" : item.color}`} />
+                  <Icon className="w-4 h-4" />
                   <span>{item.label}</span>
                 </button>
               );
             })}
           </nav>
 
-          {/* Tombol Profil Tim */}
           <button
             onClick={scrollToTeam}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-slate-300 bg-slate-900 hover:bg-slate-800 border border-white/10 transition shadow-sm active:scale-95 cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200/80 border border-slate-200 transition shadow-2xs active:scale-95 cursor-pointer"
           >
-            <Users className="w-4 h-4 text-blue-400" />
+            <Users className="w-4 h-4 text-blue-600" />
             <span>Kelompok 3</span>
           </button>
         </div>
