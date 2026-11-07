@@ -3,40 +3,37 @@
 import React, { useEffect, useRef, useState } from "react";
 
 export default function RevealOnScroll({ children, delay = 0, className = "" }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef(null);
+  const [revealed, setRevealed] = useState(false);
+  const domRef = useRef(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    const node = domRef.current;
+    if (!node) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setIsVisible(true);
+            setRevealed(true);
             observer.unobserve(entry.target);
           }
         });
       },
       {
-        threshold: 0.08,
-        rootMargin: "0px 0px -30px 0px",
+        threshold: 0.15,
+        rootMargin: "0px 0px -40px 0px",
       }
     );
 
-    observer.observe(el);
-
-    return () => {
-      if (el) observer.unobserve(el);
-    };
+    observer.observe(node);
+    return () => observer.disconnect();
   }, []);
 
   return (
     <div
-      ref={ref}
+      ref={domRef}
       style={{ transitionDelay: `${delay}ms` }}
-      className={`${isVisible ? "reveal-visible" : "reveal-hidden"} ${className}`}
+      className={`scroll-item ${revealed ? "is-revealed" : ""} ${className}`}
     >
       {children}
     </div>

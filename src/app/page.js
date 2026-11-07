@@ -8,6 +8,7 @@ import StreamCipher from "../components/modules/StreamCipher";
 import FunctionBased from "../components/modules/FunctionBased";
 import MathBased from "../components/modules/MathBased";
 import TeamSection from "../components/TeamSection";
+import RevealOnScroll from "../components/RevealOnScroll";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("block");
@@ -15,29 +16,35 @@ export default function Home() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans relative">
-      {/* Ornamen Ambient Glow */}
-      <div className="bg-ambient-orb w-[500px] h-[500px] bg-blue-300/30 -top-20 -left-20" />
-      <div className="bg-ambient-orb w-[450px] h-[450px] bg-purple-300/25 top-[500px] -right-20" />
-      <div className="bg-ambient-orb w-[500px] h-[500px] bg-teal-300/25 top-[1100px] left-10" />
-      <div className="bg-ambient-orb w-[450px] h-[450px] bg-rose-300/25 top-[1700px] right-20" />
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans relative overflow-x-hidden">
+      {/* Container Khusus Ambient Glow: Dikunci overflow-hidden agar tidak menimbulkan scroll horizontal */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute w-[450px] h-[450px] rounded-full bg-blue-300/25 blur-3xl -top-20 -left-20" />
+        <div className="absolute w-[400px] h-[400px] rounded-full bg-purple-300/20 blur-3xl top-[500px] -right-20" />
+        <div className="absolute w-[450px] h-[450px] rounded-full bg-teal-300/20 blur-3xl top-[1100px] left-0" />
+        <div className="absolute w-[400px] h-[400px] rounded-full bg-rose-300/20 blur-3xl top-[1700px] right-0" />
+      </div>
 
-      {/* Header Fixed */}
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      {/* Konten dengan pt-[76px] agar tidak tertutup header */}
       <main className="flex-1 relative z-10 pt-[76px]">
-        <Hero setActiveTab={setActiveTab} />
+        <RevealOnScroll delay={50}>
+          <Hero setActiveTab={setActiveTab} />
+        </RevealOnScroll>
 
         <div id="workspace" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          {activeTab === "block" && <BlockCipher />}
-          {activeTab === "stream" && <StreamCipher />}
-          {activeTab === "function" && <FunctionBased />}
-          {activeTab === "math" && <MathBased />}
+          <RevealOnScroll delay={100}>
+            {activeTab === "block" && <BlockCipher />}
+            {activeTab === "stream" && <StreamCipher />}
+            {activeTab === "function" && <FunctionBased />}
+            {activeTab === "math" && <MathBased />}
+          </RevealOnScroll>
         </div>
 
         <div id="team">
-          <TeamSection />
+          <RevealOnScroll delay={120}>
+            <TeamSection />
+          </RevealOnScroll>
         </div>
       </main>
 
