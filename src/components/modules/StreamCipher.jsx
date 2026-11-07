@@ -62,25 +62,25 @@ export default function StreamCipher() {
           <h2 className="text-2xl font-bold text-slate-900">2. Stream Cipher</h2>
         </div>
         <p className="text-xs sm:text-sm text-slate-500">
-          Transformasi kriptografi simetris berbasis aliran bit kontinu dan operasi XOR real-time.
+          Metode enkripsi simetris yang memproses data huruf demi huruf secara mengalir (real-time).
         </p>
       </div>
 
       <div className="p-5 sm:p-6 rounded-2xl bg-teal-50/70 border border-teal-200/80 space-y-2">
-        <div className="flex items-center gap-2 text-teal-900 font-bold text-sm">
+        <div className="flex items-center gap-2 text-teal-900 font-bold text-sm sm:text-base">
           <HelpCircle className="w-4 h-4 text-teal-600" />
-          <span>Definisi & Prinsip Kerja Stream Cipher</span>
+          <span>Pengertian Mudah: Apa itu Stream Cipher?</span>
         </div>
         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
-          Stream Cipher memproses teks secara kontinu digit per digit atau bit per bit secara langsung. Karakter pesan dikombinasikan dengan aliran kunci semu acak (keystream) menggunakan operasi penambahan modular atau bitwise XOR (C_i = P_i ⊕ K_i).
+          Jika block cipher menunggu pesan terkumpul satu kardus, <b>Stream Cipher bekerja seperti keran air yang mengalir tanpa henti</b>. Begitu Anda mengetik satu huruf, detik itu juga huruf tersebut langsung disatukan dengan satu angka acak rahasia dari aliran kunci (keystream) menggunakan gerbang logika <b>XOR</b> (C = P ⊕ K). Karena tidak perlu menunggu penampungan data, metode ini sangat cepat dan ideal untuk panggilan telepon suara, video call, dan transmisi nirkabel.
         </p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1.5 bg-slate-100 rounded-xl border border-slate-200">
         {[
           { id: "rc4", label: "1. RC4 Cipher", tag: "KSA & PRGA" },
-          { id: "otp", label: "2. One-Time Pad", tag: "Perfect Secrecy" },
-          { id: "autokey", label: "3. Autokey Cipher", tag: "Self-Key" },
+          { id: "otp", label: "2. One-Time Pad", tag: "Kunci Sekali Pakai" },
+          { id: "autokey", label: "3. Autokey Cipher", tag: "Kunci Menyambung" },
         ].map((item) => (
           <button
             key={item.id}
@@ -98,7 +98,7 @@ export default function StreamCipher() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="p-5 sm:p-6 rounded-2xl saas-card space-y-4">
           <div className="flex items-center justify-between">
-            <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Input Data (Teks / Hex)</label>
+            <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Input Data (Teks Plain / Hex)</label>
             <button onClick={handleReset} className="flex items-center gap-1 text-xs text-slate-500 hover:text-rose-600">
               <RotateCcw className="w-3.5 h-3.5" /><span>Reset</span>
             </button>
@@ -114,7 +114,7 @@ export default function StreamCipher() {
 
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Kunci Aliran (Keystream Key)</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Kunci Rahasia</label>
               {method === "otp" && (
                 <button onClick={generateOTPKey} className="flex items-center gap-1 text-[11px] text-teal-700 font-bold bg-teal-50 px-2.5 py-0.5 rounded border border-teal-200 cursor-pointer">
                   <Key className="w-3 h-3" /><span>Generate Kunci Otomatis</span>
@@ -157,9 +157,9 @@ export default function StreamCipher() {
           </div>
 
           <div className="mt-4 p-3 bg-teal-50/70 border border-teal-100 rounded-xl text-xs text-slate-600">
-            {method === "rc4" && "RC4 menghasilkan deret bit semu melalui permutasi state 256 byte berbasis KSA dan PRGA."}
-            {method === "otp" && "One-Time Pad memenuhi kriteria Perfect Secrecy dengan syarat panjang kunci sama persis dengan pesan."}
-            {method === "autokey" && "Autokey menggunakan kunci awal singkat yang disambung oleh plaintext untuk membentuk keystream tanpa batas."}
+            {method === "rc4" && "Ringkasan: RC4 mengocok barisan angka 0-255 lalu memuntahkan aliran byte acak semu untuk di-XOR dengan teks."}
+            {method === "otp" && "Ringkasan: OTP adalah satu-satunya cipher yang mustahil dipecahkan asalkan kunci acak sepanjang teks dan sekali pakai."}
+            {method === "autokey" && "Ringkasan: Autokey menyambung kunci pendek menggunakan huruf teks aslinya sendiri agar kunci tidak berulang."}
           </div>
         </div>
       </div>
@@ -168,29 +168,29 @@ export default function StreamCipher() {
         <div className="flex items-center gap-2 border-b border-slate-100 pb-2.5">
           <BookOpen className="w-4 h-4 text-teal-600" />
           <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-            {method === "rc4" && "Formulasi & Mekanisme Algoritma RC4 (Rivest Cipher 4)"}
-            {method === "otp" && "Formulasi & Mekanisme Algoritma One-Time Pad (Vernam Cipher)"}
-            {method === "autokey" && "Formulasi & Mekanisme Algoritma Autokey Cipher"}
+            {method === "rc4" && "Alur Kerja Jelas: RC4 (Rivest Cipher 4)"}
+            {method === "otp" && "Alur Kerja Jelas: One-Time Pad (Vernam Cipher)"}
+            {method === "autokey" && "Alur Kerja Jelas: Autokey Cipher"}
           </h4>
         </div>
 
         {method === "rc4" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-600">
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">1. Inisialisasi: S[i] = i</b>
-              <p>State array 256 byte diisi berurutan dari angka 0 sampai 255.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 1: Inisialisasi Barisan (0 sampai 255)</b>
+              <p>Sistem menyiapkan wadah array 256 elemen yang berisi angka urut: S[0]=0, S[1]=1, ..., S[255]=255.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">2. Formulasi KSA (Key-Scheduling)</b>
-              <p className="font-mono text-slate-800">j = (j + S[i] + key[i mod keylen]) mod 256, swap(S[i], S[j])</p>
+              <b className="text-slate-900 block font-semibold">Tahap 2: Kocok Angka Menggunakan Kunci (KSA)</b>
+              <p>Barisan 0-255 tersebut dikocok acak posisinya berulang kali mengikuti nilai huruf kata sandi yang Anda ketik.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">3. Formulasi PRGA (Keystream Generation)</b>
-              <p className="font-mono text-slate-800">i = (i + 1) mod 256; j = (j + S[i]) mod 256; K = S[(S[i] + S[j]) mod 256]</p>
+              <b className="text-slate-900 block font-semibold">Tahap 3: Hasilkan Kunci Aliran Acak (PRGA)</b>
+              <p>Dua jarum penunjuk indeks (i dan j) berputar terus menerus mengambil satu angka acak baru dari array S.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">4. Enkripsi/Dekripsi Bitwise</b>
-              <p className="font-mono text-slate-800">C_i = P_i ⊕ K dan P_i = C_i ⊕ K</p>
+              <b className="text-slate-900 block font-semibold">Tahap 4: Gabungkan dengan Teks (XOR)</b>
+              <p>Tiap huruf teks langsung di-XOR dengan byte acak yang baru keluar: Ciphertext = Plaintext ⊕ Keystream.</p>
             </div>
           </div>
         )}
@@ -198,20 +198,20 @@ export default function StreamCipher() {
         {method === "otp" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-600">
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">1. Syarat Panjang: |K| = |P|</b>
-              <p>Panjang kunci rahasia secara mutlak harus setara dengan jumlah karakter pesan terbuka.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 1: Panjang Kunci Wajib Sama Persis</b>
+              <p>Jika teks Anda terdiri dari 15 huruf, maka kunci rahasia yang dibangkitkan wajib memiliki tepat 15 huruf acak murni.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">2. Formulasi Enkripsi Vernam</b>
-              <p className="font-mono text-slate-800">C_i = P_i ⊕ K_i (operasi eksklusif OR bit per bit)</p>
+              <b className="text-slate-900 block font-semibold">Tahap 2: Enkripsi Bit per Bit</b>
+              <p>Karakter teks ke-1 di-XOR dengan kunci ke-1, karakter ke-2 dengan kunci ke-2, dan seterusnya secara independen.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">3. Formulasi Dekripsi Vernam</b>
-              <p className="font-mono text-slate-800">P_i = C_i ⊕ K_i (identitas involutif operasi XOR)</p>
+              <b className="text-slate-900 block font-semibold">Tahap 3: Dekripsi dengan Kunci yang Sama</b>
+              <p>Penerima cukup melakukan operasi XOR balik antara sandi dengan kunci yang sama persis: Plaintext = Ciphertext ⊕ Kunci.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">4. Teorema Kerahasiaan Sempurna Shannon</b>
-              <p className="font-mono text-slate-800">P(M | C) = P(M) untuk setiap pesan terbuka M dan sandi C.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 4: Kunci Dibuang Permanen (Sekali Pakai)</b>
+              <p>Kunci rahasia segera dimusnahkan dan tidak boleh dipakai lagi untuk pesan lain agar keamanan tetap absolut.</p>
             </div>
           </div>
         )}
@@ -219,20 +219,20 @@ export default function StreamCipher() {
         {method === "autokey" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-600">
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">1. Pembentukan Keystream: K_stream = Seed || P</b>
-              <p>Kunci awal disambung langsung dengan karakter plaintext untuk membentuk deret kunci panjang.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 1: Pasang Kata Kunci Awal</b>
+              <p>Kunci rahasia pendek yang Anda buat dipasang di posisi paling depan barisan kunci aliran.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">2. Formulasi Enkripsi Autokey</b>
-              <p className="font-mono text-slate-800">C_i = (P_i + K_i) mod 128</p>
+              <b className="text-slate-900 block font-semibold">Tahap 2: Sambung Memakai Teks Asli</b>
+              <p>Sisa panjang kunci otomatis dipanjangkan menggunakan huruf-huruf dari isi pesan aslinya sendiri.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">3. Formulasi Dekripsi Autokey</b>
-              <p className="font-mono text-slate-800">P_i = (C_i - K_i + 128) mod 128</p>
+              <b className="text-slate-900 block font-semibold">Tahap 3: Hitung Penjumlahan Modular</b>
+              <p>Huruf teks dijumlahkan dengan huruf kuncinya lalu dimodulo 128: Cipher = (Plaintext + Kunci) mod 128.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">4. Rekonstruksi Rekursif</b>
-              <p>Tiap karakter plaintext hasil dekripsi P_i langsung dimasukkan ke antrean keystream berikutnya.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 4: Dekripsi Bersambung</b>
+              <p>Saat mendekripsi, huruf teks yang baru berhasil terbaca langsung dimasukkan ke belakang kunci untuk membuka huruf berikutnya.</p>
             </div>
           </div>
         )}

@@ -46,9 +46,6 @@ export default function Navbar({ activeTab, setActiveTab }) {
               <span className="font-extrabold text-slate-900 text-lg tracking-tight">
                 KRIPTO<span className="text-blue-600">NEXUS</span>
               </span>
-              <span className="block text-[10px] text-slate-500 font-mono tracking-wider font-semibold">
-                ENTERPRISE SUITE
-              </span>
             </div>
           </button>
 

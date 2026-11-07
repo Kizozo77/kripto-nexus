@@ -72,25 +72,25 @@ export default function MathBased() {
           <h2 className="text-2xl font-bold text-slate-900">4. Algoritma Dasar Matematika (Modulo 128)</h2>
         </div>
         <p className="text-xs sm:text-sm text-slate-500">
-          Transformasi kriptografis berbasis aljabar linear matriks ASCII, faktorisasi prima, dan logaritma diskret.
+          Penerapan teori matematika aljabar linear matriks ASCII, faktorisasi prima, dan logaritma diskret.
         </p>
       </div>
 
       <div className="p-5 sm:p-6 rounded-2xl bg-rose-50/70 border border-rose-200/80 space-y-2">
-        <div className="flex items-center gap-2 text-rose-900 font-bold text-sm">
+        <div className="flex items-center gap-2 text-rose-900 font-bold text-sm sm:text-base">
           <HelpCircle className="w-4 h-4 text-rose-600" />
-          <span>Konsep Fundamental: Ruang Lingkup Aljabar Modulo 128</span>
+          <span>Pengertian Mudah: Mengapa Menggunakan Modulo 128?</span>
         </div>
         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
-          Berbeda dari kriptografi sekolah biasa yang hanya mendukung alfabet A-Z (modulo 26), modul ini diimplementasikan di atas gelanggang komutatif Modulo 128 (Z_128). Desain ini mencakup seluruh 128 karakter tabel ASCII standar (0–127): huruf besar, huruf kecil, angka, spasi, dan simbol tanpa perlu menghapus spasi. Syarat mutlak pembalikan (dekripsi) adalah nilai penentu matriks atau parameter eksponen wajib ganjil (gcd(det, 128) = 1).
+          Kalkulator kriptografi sekolah pada umumnya hanya bisa huruf A sampai Z (modulo 26). Pada aplikasi ini, kita menggunakan <b>Modulo 128</b>, artinya kita dapat mengenkripsi <b>seluruh 128 karakter tabel ASCII standar</b>: huruf besar, huruf kecil, angka (0-9), spasi, serta tanda baca lengkap tanpa perlu membuang spasi. Agar pesan sandi bisa didekripsi kembali, kunci matematika yang dipakai wajib memiliki nilai determinan ganjil (faktor pengali tidak boleh genap terhadap 128).
         </p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1.5 bg-slate-100 rounded-xl border border-slate-200">
         {[
           { id: "hill", label: "1. Aljabar Linear (Hill)", tag: "Mod 128 ASCII" },
-          { id: "rsa", label: "2. Faktorisasi Prima (RSA)", tag: "Asymmetric" },
-          { id: "dh", label: "3. Diffie-Hellman", tag: "Key Exchange" },
+          { id: "rsa", label: "2. Faktorisasi Prima (RSA)", tag: "Asimetris Publik-Privat" },
+          { id: "dh", label: "3. Diffie-Hellman", tag: "Pertukaran Kunci" },
         ].map((item) => (
           <button
             key={item.id}
@@ -108,7 +108,7 @@ export default function MathBased() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="p-5 sm:p-6 rounded-2xl saas-card space-y-4">
           <div className="flex items-center justify-between">
-            <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Parameter Komputasi</label>
+            <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Parameter Masukan</label>
             <button onClick={handleReset} className="flex items-center gap-1 text-xs text-slate-500 hover:text-rose-600">
               <RotateCcw className="w-3.5 h-3.5" /><span>Reset</span>
             </button>
@@ -117,13 +117,13 @@ export default function MathBased() {
           {method === "hill" && (
             <>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Input Teks (Mendukung Spasi & Simbol ASCII)</label>
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Input Teks (Bebas Spasi & Simbol ASCII)</label>
                 <input type="text" value={hillText} onChange={(e) => setHillText(e.target.value)} placeholder="Contoh: Kelompok 3" className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-mono" />
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Matriks Kunci 2x2 (4 Nilai: a b c d)</label>
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Matriks Kunci 2x2 (4 Angka: a b c d)</label>
                 <input type="text" value={hillMatrix} onChange={(e) => setHillMatrix(e.target.value)} className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-mono" />
-                <span className="text-[11px] text-slate-500 mt-1 block">Contoh valid: <b>3 5 1 2</b> (det = 1, ganjil sehingga memiliki invers modulo 128).</span>
+                <span className="text-[11px] text-slate-500 mt-1 block">Contoh kunci valid: <b>3 5 1 2</b> (determinan = 1, bernilai ganjil sehingga memiliki invers modulo 128).</span>
               </div>
               <div className="grid grid-cols-2 gap-3 pt-2">
                 <button onClick={() => handleHill(true)} className="py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl text-xs sm:text-sm shadow-xs transition active:scale-95 cursor-pointer">Enkripsi Hill</button>
@@ -136,11 +136,11 @@ export default function MathBased() {
             <>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Prima p</label>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Bilangan Prima p</label>
                   <input type="number" value={rsaP} onChange={(e) => setRsaP(e.target.value)} className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Prima q</label>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Bilangan Prima q</label>
                   <input type="number" value={rsaQ} onChange={(e) => setRsaQ(e.target.value)} className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
                 </div>
               </div>
@@ -150,7 +150,7 @@ export default function MathBased() {
                   <input type="number" value={rsaE} onChange={(e) => setRsaE(e.target.value)} className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Pesan Integer m (&lt; p*q)</label>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Pesan Angka m (&lt; p*q)</label>
                   <input type="number" value={rsaMsg} onChange={(e) => setRsaMsg(e.target.value)} className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
                 </div>
               </div>
@@ -166,17 +166,17 @@ export default function MathBased() {
                   <input type="number" value={dhP} onChange={(e) => setDhP(e.target.value)} className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Generator Basis (g)</label>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Basis Generator (g)</label>
                   <input type="number" value={dhG} onChange={(e) => setDhG(e.target.value)} className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Private Alice (a)</label>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Kunci Privat Alice (a)</label>
                   <input type="number" value={dhPrivA} onChange={(e) => setDhPrivA(e.target.value)} className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Private Bob (b)</label>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Kunci Privat Bob (b)</label>
                   <input type="number" value={dhPrivB} onChange={(e) => setDhPrivB(e.target.value)} className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
                 </div>
               </div>
@@ -214,9 +214,9 @@ export default function MathBased() {
           )}
 
           <div className="mt-4 p-3 bg-rose-50/70 border border-rose-100 rounded-xl text-xs text-slate-600">
-            {method === "hill" && "Hill Cipher: Transformasi aljabar linear perkalian matriks 2x2 terhadap vektor karakter ASCII."}
-            {method === "rsa" && "RSA: Keamanan kriptografi asimetris berbasis kesulitan komputasi pemfaktoran bilangan prima."}
-            {method === "dh" && "Diffie-Hellman: Kesepakatan kunci simetris aman melalui kanal publik berbasis logaritma diskret."}
+            {method === "hill" && "Hill Cipher: Pasangan huruf dikalikan dengan kotak matriks angka 2x2 di dalam Modulo 128."}
+            {method === "rsa" && "RSA: Siapa saja bisa mengunci pesan dengan kunci publik, tapi hanya pemilik kunci privat yang bisa membukanya."}
+            {method === "dh" && "Diffie-Hellman: Dua orang saling bertukar data di internet terbuka untuk menyepakati kunci rahasia yang sama persis."}
           </div>
         </div>
       </div>
@@ -225,29 +225,29 @@ export default function MathBased() {
         <div className="flex items-center gap-2 border-b border-slate-100 pb-2.5">
           <BookOpen className="w-4 h-4 text-rose-600" />
           <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-            {method === "hill" && "Formulasi & Mekanisme Hill Cipher Modulo 128"}
-            {method === "rsa" && "Formulasi & Mekanisme Kriptosistem Asimetris RSA"}
-            {method === "dh" && "Formulasi & Mekanisme Protokol Diffie-Hellman"}
+            {method === "hill" && "Alur Kerja Jelas: Hill Cipher Modulo 128"}
+            {method === "rsa" && "Alur Kerja Jelas: Toy RSA (Asimetris Publik-Privat)"}
+            {method === "dh" && "Alur Kerja Jelas: Protokol Pertukaran Kunci Diffie-Hellman"}
           </h4>
         </div>
 
         {method === "hill" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-600">
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">1. Vektorisasi Pasangan Karakter</b>
-              <p className="font-mono text-slate-800">P = [p1, p2]^T berdasarkan indeks tabel ASCII 0 hingga 127.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 1: Ambil 2 Karakter ASCII</b>
+              <p>Teks dipotong per pasangan 2 huruf (p1, p2), lalu masing-masing diubah ke nomor urut kode tabel ASCII (0 hingga 127).</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">2. Formulasi Enkripsi Matriks</b>
-              <p className="font-mono text-slate-800">C = (K × P) mod 128</p>
+              <b className="text-slate-900 block font-semibold">Tahap 2: Kalikan dengan Matriks Kunci 2x2</b>
+              <p>Pasangan angka dikalikan dengan matriks kunci [a b; c d]: c1 = (a*p1 + b*p2) mod 128 dan c2 = (c*p1 + d*p2) mod 128.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">3. Syarat Inversibilitas Modular</b>
-              <p className="font-mono text-slate-800">gcd(det(K), 128) = 1 (determinan ad - bc wajib berupa bilangan ganjil).</p>
+              <b className="text-slate-900 block font-semibold">Tahap 3: Syarat Determinan Wajib Ganjil</b>
+              <p>Determinan (ad - bc) wajib bernilai ganjil agar matriks memiliki kebalikan (invers) di dalam hitungan Modulo 128.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">4. Formulasi Dekripsi Matriks Invers</b>
-              <p className="font-mono text-slate-800">P = (K^-1 × C) mod 128 di mana K^-1 = det^-1 × adj(K) mod 128.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 4: Dekripsi Memakai Matriks Balikan</b>
+              <p>Untuk membaca kembali teks sandi, pasangan huruf dikalikan dengan matriks balikan modularnya (K invers) modulo 128.</p>
             </div>
           </div>
         )}
@@ -255,20 +255,20 @@ export default function MathBased() {
         {method === "rsa" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-600">
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">1. Modulus dan Totien Euler</b>
-              <p className="font-mono text-slate-800">n = p × q dan phi(n) = (p - 1) × (q - 1)</p>
+              <b className="text-slate-900 block font-semibold">Tahap 1: Buat Gembok dari Dua Angka Prima</b>
+              <p>Dua angka prima (p dan q) dikalikan untuk menghasilkan angka gembok: n = p * q dan totien phi = (p - 1) * (q - 1).</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">2. Kunci Publik (e)</b>
-              <p className="font-mono text-slate-800">1 &lt; e &lt; phi(n) dan gcd(e, phi(n)) = 1</p>
+              <b className="text-slate-900 block font-semibold">Tahap 2: Terbitkan Kunci Publik (e, n)</b>
+              <p>Kunci publik diumumkan secara bebas ke publik agar siapa saja bisa mengunci pesan menggunakan rumus: Cipher = (m^e) mod n.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">3. Kunci Privat (d)</b>
-              <p className="font-mono text-slate-800">d × e ≡ 1 mod phi(n) (invers modular Extended Euclidean)</p>
+              <b className="text-slate-900 block font-semibold">Tahap 3: Simpan Kunci Pembuka Privat (d)</b>
+              <p>Kunci pembuka d dihitung memakai Extended Euclidean Algorithm (d * e mod phi = 1) dan dirahasiakan oleh pemilik.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">4. Eksponensiasi Modular</b>
-              <p className="font-mono text-slate-800">Enkripsi: c = (m^e) mod n | Dekripsi: m = (c^d) mod n</p>
+              <b className="text-slate-900 block font-semibold">Tahap 4: Buka Pesan Rahasia</b>
+              <p>Penerima membuka angka pesan rahasia menggunakan kunci privatnya: Pesan Asli = (Cipher^d) mod n.</p>
             </div>
           </div>
         )}
@@ -276,20 +276,20 @@ export default function MathBased() {
         {method === "dh" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-600">
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">1. Parameter Domain Publik: Prima (p) dan Generator (g)</b>
-              <p>Disepakati secara terbuka oleh Alice dan Bob melalui kanal publik tanpa rahasia.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 1: Sepakati Angka Terbuka di Publik</b>
+              <p>Alice dan Bob mengumumkan angka modulus prima p dan generator basis g secara bebas tanpa takut disadap pihak luar.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">2. Kunci Publik Alice dan Bob</b>
-              <p className="font-mono text-slate-800">Alice: A = (g^a) mod p | Bob: B = (g^b) mod p</p>
+              <b className="text-slate-900 block font-semibold">Tahap 2: Buat Angka Rahasia Sendiri</b>
+              <p>Alice memilih angka rahasia privat a, sedangkan Bob memilih angka rahasia privat b di perangkatnya masing-masing.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">3. Komputasi Shared Secret Bersama</b>
-              <p className="font-mono text-slate-800">Alice: K = (B^a) mod p | Bob: K = (A^b) mod p</p>
+              <b className="text-slate-900 block font-semibold">Tahap 3: Tukar Hasil Campuran</b>
+              <p>Alice mengirimkan A = (g^a) mod p kepada Bob, dan Bob mengirimkan B = (g^b) mod p kepada Alice lewat jaringan internet.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">4. Kesetaraan Nilai Kunci Rahasia</b>
-              <p className="font-mono text-slate-800">K = (g^(a × b)) mod p (kedua belah pihak menghasilkan nilai identik).</p>
+              <b className="text-slate-900 block font-semibold">Tahap 4: Kunci Akhir Otomatis Sama</b>
+              <p>Alice menghitung (B^a) mod p dan Bob menghitung (A^b) mod p. Keduanya menghasilkan angka kunci yang sama persis: K = (g^(a*b)) mod p.</p>
             </div>
           </div>
         )}

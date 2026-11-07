@@ -57,17 +57,20 @@ export default function FunctionBased() {
           <h2 className="text-2xl font-bold text-slate-900">3. Fungsi Utama Kriptografi (CIA Triad)</h2>
         </div>
         <p className="text-xs sm:text-sm text-slate-500">
-          Implementasi tiga pilar fundamental arsitektur keamanan informasi: Kerahasiaan, Integritas, dan Otentikasi.
+          Uji coba tiga pilar utama keamanan data: Kerahasiaan (Confidentiality), Integritas (Integrity), dan Otentikasi (Authenticity).
         </p>
       </div>
 
       <div className="p-5 sm:p-6 rounded-2xl bg-purple-50/70 border border-purple-200/80 space-y-2">
-        <div className="flex items-center gap-2 text-purple-900 font-bold text-sm">
+        <div className="flex items-center gap-2 text-purple-900 font-bold text-sm sm:text-base">
           <HelpCircle className="w-4 h-4 text-purple-600" />
-          <span>Definisi & Pilar Fundamental CIA Triad</span>
+          <span>Pengertian Mudah: 3 Pilar Keamanan Informasi</span>
         </div>
         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
-          Kriptografi modern menjamin tiga pilar keamanan: 1. Kerahasiaan (Confidentiality) agar data tidak terbaca pihak luar, 2. Integritas (Integrity) memastikan keutuhan data dari manipulasi pihak lain, dan 3. Otentikasi (Authenticity) memastikan keabsahan identitas pengirim pesan menggunakan kunci rahasia bersama.
+          Kriptografi bukan hanya sekadar mengacak teks agar tidak bisa dibaca orang. Keamanan sistem digital bersandar pada 3 pilar: 
+          <b> 1. Kerahasiaan (Caesar)</b> memastikan pesan hanya bisa dibaca oleh penerima yang berhak, 
+          <b> 2. Integritas (SHA-256)</b> seperti sidik jari digital untuk mendeteksi apakah isi dokumen pernah diubah diam-diam di perjalanan, dan 
+          <b> 3. Otentikasi (HMAC)</b> seperti cap stempel tanda tangan basah menggunakan kunci rahasia bersama untuk membuktikan bahwa pengirimnya adalah orang yang sah.
         </p>
       </div>
 
@@ -116,7 +119,7 @@ export default function FunctionBased() {
 
           {method === "hmac" && (
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Secret Key Bersama (Shared Secret)</label>
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Kunci Rahasia Bersama (Secret Key)</label>
               <input type="text" value={secretKey} onChange={(e) => setSecretKey(e.target.value)} placeholder="Masukkan kunci rahasia bersama..." className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm font-mono" />
             </div>
           )}
@@ -131,10 +134,10 @@ export default function FunctionBased() {
               </div>
             )}
             {method === "sha256" && (
-              <button onClick={handleProcessSHA256} className="w-full py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-xs sm:text-sm shadow-xs transition active:scale-95 cursor-pointer">Hasilkan SHA-256 Digest</button>
+              <button onClick={handleProcessSHA256} className="w-full py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-xs sm:text-sm shadow-xs transition active:scale-95 cursor-pointer">Hasilkan SHA-256 Digest (Sidik Jari)</button>
             )}
             {method === "hmac" && (
-              <button onClick={handleProcessHMAC} className="w-full py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-xs sm:text-sm shadow-xs transition active:scale-95 cursor-pointer">Hasilkan Kode Otentikasi HMAC</button>
+              <button onClick={handleProcessHMAC} className="w-full py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-xs sm:text-sm shadow-xs transition active:scale-95 cursor-pointer">Hasilkan Stempel Otentikasi HMAC</button>
             )}
           </div>
         </div>
@@ -154,9 +157,9 @@ export default function FunctionBased() {
           </div>
 
           <div className="mt-4 p-3 bg-purple-50/70 border border-purple-100 rounded-xl text-xs text-slate-600">
-            {method === "caesar" && "Caesar Cipher: Kerahasiaan dasar melalui pergeseran alfabet modular."}
-            {method === "sha256" && "SHA-256: Integritas mutlak data melalui pemetaan nilai hash digest satu arah sepanjang 256-bit (64 hex)."}
-            {method === "hmac" && "HMAC: Otentikasi pengirim resmi melalui penggabungan hash SHA-256 dan kunci rahasia bersama."}
+            {method === "caesar" && "Caesar mengamankan pesan dengan menggeser letak abjad sejauh k langkah ke depan."}
+            {method === "sha256" && "SHA-256 menghasilkan sidik jari 64 heksadesimal tetap; ubah 1 titik kecil, seluruh kodenya berubah total."}
+            {method === "hmac" && "HMAC memastikan dokumen tidak dimanipulasi sekaligus membuktikan bahwa pengirimnya adalah pemilik kunci yang sah."}
           </div>
         </div>
       </div>
@@ -165,29 +168,29 @@ export default function FunctionBased() {
         <div className="flex items-center gap-2 border-b border-slate-100 pb-2.5">
           <BookOpen className="w-4 h-4 text-purple-600" />
           <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-            {method === "caesar" && "Formulasi & Mekanisme Caesar Cipher (Pilar Kerahasiaan)"}
-            {method === "sha256" && "Formulasi & Mekanisme SHA-256 Digest (Pilar Integritas)"}
-            {method === "hmac" && "Formulasi & Mekanisme HMAC SHA-256 (Pilar Otentikasi)"}
+            {method === "caesar" && "Alur Kerja Jelas: Caesar Cipher (Pilar Kerahasiaan)"}
+            {method === "sha256" && "Alur Kerja Jelas: SHA-256 Digest (Pilar Integritas Data)"}
+            {method === "hmac" && "Alur Kerja Jelas: HMAC SHA-256 (Pilar Otentikasi Pengirim)"}
           </h4>
         </div>
 
         {method === "caesar" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-600">
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">1. Pemetaan Alfabet: A=0, B=1, ..., Z=25</b>
-              <p>Himpunan karakter alfabet dipetakan secara terstruktur ke dalam sistem bilangan bulat modulo 26.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 1: Ubah Abjad Menjadi Angka</b>
+              <p>Huruf A dipetakan ke angka 0, B ke 1, C ke 2, dan seterusnya hingga huruf Z ke angka 25.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">2. Formulasi Enkripsi Caesar</b>
-              <p className="font-mono text-slate-800">C = (P + k) mod 26</p>
+              <b className="text-slate-900 block font-semibold">Tahap 2: Tambah Jarak Pergeseran (Shift)</b>
+              <p>Nilai angka huruf ditambah dengan nilai pergeseran kunci k: Cipher = (Plaintext + k) mod 26.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">3. Formulasi Dekripsi Caesar</b>
-              <p className="font-mono text-slate-800">P = (C - k + 26) mod 26</p>
+              <b className="text-slate-900 block font-semibold">Tahap 3: Putar Balik jika Lewat Huruf Z</b>
+              <p>Operasi sisa bagi (mod 26) memastikan jika huruf digeser melampaui huruf Z, nilainya otomatis memutar kembali ke huruf A.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">4. Ruang Kunci Terbatas</b>
-              <p className="font-mono text-slate-800">|K| = 26 (rentan terhadap serangan Brute Force Exhaustive Search).</p>
+              <b className="text-slate-900 block font-semibold">Tahap 4: Dekripsi Balik</b>
+              <p>Untuk mengembalikan pesan, huruf sandi cukup dikurangi kembali dengan nilai kuncinya: Plaintext = (Cipher - k + 26) mod 26.</p>
             </div>
           </div>
         )}
@@ -195,20 +198,20 @@ export default function FunctionBased() {
         {method === "sha256" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-600">
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">1. Konstruksi Merkle-Damgard 512-bit</b>
-              <p>Pesan masukan dipadatkan menjadi blok-blok 512-bit lalu diolah melalui 64 putaran kompresi searah.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 1: Masukkan Data Ukuran Berapa Saja</b>
+              <p>Anda bisa memasukkan satu huruf, satu kata, maupun teks dokumen tebal tanpa ada batasan panjang awal.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">2. Output Konstan: 256-bit (64 Hex)</b>
-              <p className="font-mono text-slate-800">H(M) menghasilkan sidik jari unik dengan panjang tepat 64 karakter heksadesimal.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 2: Hasil Selalu Sepanjang 64 Karakter</b>
+              <p>Output hash dipastikan selalu memiliki ukuran tetap 256-bit (tampil dalam 64 karakter heksadesimal 0-9 dan a-f).</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">3. Pre-image Resistance: H(x) = h</b>
-              <p>Secara komputasi mustahil merekonstruksi isi pesan asli x hanya berdasarkan nilai hash h.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 3: Fungsi Satu Arah (Mustahil Dibalik)</b>
+              <p>Sangat mudah menghitung teks menjadi kode hash, namun secara komputasi mustahil membedah kode hash kembali menjadi teks aslinya.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">4. Avalanche Effect (Efek Longsor)</b>
-              <p>Perubahan 1 bit data masukan merombak lebih dari 50% bit keluaran nilai hash secara total.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 4: Efek Longsoran (Avalanche Effect)</b>
+              <p>Jika isi teks diubah satu spasi saja, lebih dari 50% karakter kode hash langsung berubah total, membuktikan integritas pesan rusak.</p>
             </div>
           </div>
         )}
@@ -216,20 +219,20 @@ export default function FunctionBased() {
         {method === "hmac" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-600">
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">1. Standar RFC 2104</b>
-              <p>Mengombinasikan fungsi hash satu arah SHA-256 dengan kunci rahasia bersama antara pengirim dan penerima.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 1: Sepakati Satu Kunci Rahasia Bersama</b>
+              <p>Pengirim dan penerima harus sama-sama memegang satu kata kunci rahasia yang tidak diketahui oleh orang lain.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">2. Formulasi Tag HMAC Lengkap</b>
-              <p className="font-mono text-slate-800">HMAC(K, M) = H((K ⊕ opad) || H((K ⊕ ipad) || M))</p>
+              <b className="text-slate-900 block font-semibold">Tahap 2: Lapisan Hash Pertama (Inner Hash)</b>
+              <p>Kunci dicampur dengan kode pengganjal tetap (ipad), lalu digabung dengan teks pesan dan di-hash pertama kali memakai SHA-256.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">3. Konstanta Padding Tetap</b>
-              <p className="font-mono text-slate-800">ipad = 0x3636...36 dan opad = 0x5C5C...5C (sepanjang blok 64 byte)</p>
+              <b className="text-slate-900 block font-semibold">Tahap 3: Lapisan Hash Kedua (Outer Hash)</b>
+              <p>Kunci dicampur lagi dengan kode pengganjal berbeda (opad), digabung dengan hasil hash tahap 1, lalu di-hash ulang untuk membentuk stempel akhir.</p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-              <b className="text-slate-900 block font-semibold">4. Ketahanan Terhadap Serangan</b>
-              <p>Struktur nesting ganda terbukti kebal dari Length Extension Attack yang sering menimpa hash langsung.</p>
+              <b className="text-slate-900 block font-semibold">Tahap 4: Verifikasi Keabsahan Pengirim</b>
+              <p>Penerima menghitung ulang HMAC pesan tersebut dengan kunci rahasianya. Jika kodenya cocok, pesan dijamin asli dan pengirimnya valid.</p>
             </div>
           </div>
         )}
